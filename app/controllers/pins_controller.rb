@@ -20,33 +20,25 @@ class PinsController < ApplicationController
   
   def create
     @pin = Pin.new(pin_params)
-
     if @pin.save
       redirect_to @pin, notice: 'Pin was successfully created.' 
-      else
+    else
       render action: 'new'
     end
   end
 
   def update
-    respond_to do |format|
-      if @pin.update(pin_params)
-        format.html { redirect_to @pin, notice: 'Pin was successfully updated.' }
-        format.json { render :show, status: :ok, location: @pin }
-      else
-        format.html { render :edit }
-        format.json { render json: @pin.errors, status: :unprocessable_entity }
-      end
+    if @pin.update(pin_params)
+      redirect_to @pin, notice: 'Pin was successfully updated.'
+    else
+      render action: 'edit' 
     end
   end
 
 
   def destroy
     @pin.destroy
-    respond_to do |format|
-      format.html { redirect_to pins_url, notice: 'Pin was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    redirect_to pins_url, notice: 'Pin was successfully destroyed.'
   end
 
   private
