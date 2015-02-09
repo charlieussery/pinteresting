@@ -18,6 +18,16 @@ $jumbotron-bg: white;
      font-weight: bold;
 }
 
+.navbar-default .navbar-nav > li > a > button > span {
+
+  margin-right:5px;
+}
+
+.navbar-default .navbar-nav > li > a > span {
+  color: #777777;
+  margin-right:5px;
+}
+
 .checkbox input#user_remember_me {
 	margin-left:0;
 }
